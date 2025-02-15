@@ -44,21 +44,28 @@ def test_2(api_client):
     # print(f"Created ad ID: {response_data['id']}")
 
 @pytest.mark.parametrize(
-    "pNData, pSellerID, pName, pPrice", [
-    (1, baseSellerID, "bee", None),
-    (2, baseSellerID, None, 30),
-    (3, None, "bee", 0),
+    "pNData, pReqData", 
+    [
+        (1,{
+            "sellerID": baseSellerID,
+            "name": "bee",
+        }),
+         (2,{
+            "sellerID": baseSellerID,
+            "price": 50,
+        }),
+         (3,{
+            "name": "bee",
+            "price": 50,
+        })
     ])
-def test_3(api_client, pNData, pSellerID, pName, pPrice):
-    request_data = {
-        "sellerID": pSellerID,
-        "name": pName,
-        "price": pPrice,
-    }
+def test_3(api_client, pNData, pReqData):
+    request_data = pReqData
     message = pNData
 
     api_client.create_ad(request_data)
-    assert api_client.response.status_code == 400, f"Ожидалось получение статуса 400 Bad Request и сообщение об ошибке, но {message} набор данных прошел успешно"
+    assert api_client.response.status_code == 400, f"Ожидалось получение статуса 400 Bad Request и сообщение об ошибке, но  набор данных {message} прошел успешно"
+
 
 
 @pytest.mark.parametrize(
@@ -84,7 +91,7 @@ def test_4( api_client, pNData, pSellerID, pName, pPrice, pContacts, pLikes, pVi
     }
     message = pNData
     api_client.create_ad(request_data)
-    assert api_client.response.status_code == 400, f"Ожидалось получение статуса 400 Bad Request и сообщение об ошибке, но {message} набор данных прошел успешно"
+    assert api_client.response.status_code == 400, f"Ожидалось получение статуса 400 Bad Request и сообщение об ошибке, но  набор данных {message} прошел успешно"
 
 @pytest.mark.parametrize(
 "pNData, pSellerID, pName, pPrice, pContacts, pLikes, pViewCount",
@@ -109,4 +116,4 @@ def test_5( api_client, pNData, pSellerID, pName, pPrice, pContacts, pLikes, pVi
     }
     message = pNData
     api_client.create_ad(request_data)
-    assert api_client.response.status_code == 400, f"Ожидалось получение статуса 400 Bad Request и сообщение об ошибке, но {message} набор данных прошел успешно"
+    assert api_client.response.status_code == 400, f"Ожидалось получение статуса 400 Bad Request и сообщение об ошибке, но  набор данных {message} прошел успешно"
