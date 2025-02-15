@@ -1,0 +1,11 @@
+{
+  "id": "896b4216-67ec-4f5a-a194-b3cb36416ca4",
+  "sellerID": 787878,
+  "name": "Honda Accord",
+  "price": 5000000,
+  "statistics": {
+    "contacts": 324,
+    "likes": 223,
+    "viewCount": 124
+  }
+}

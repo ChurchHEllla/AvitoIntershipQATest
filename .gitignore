@@ -1,2 +1,13 @@
-# Virtual Environment
+# Python virtual environment
 venv/
+
+# Test artifacts
+__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Configuration files
+
+# IDE-specific files
+.vscode/

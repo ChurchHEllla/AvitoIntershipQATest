@@ -1,0 +1,26 @@
+[
+  {
+    "id": "740d3f07-aa41-4dd5-823e-4c032c0454e6",
+    "statistics": {
+      "contacts": 324,
+      "likes": 223,
+      "viewCount": 124
+    }
+  },
+  {
+    "id": "b7852ee5-4033-43b6-aed8-d622719ce2d7",
+    "statistics": {
+      "contacts": 123,
+      "likes": 2460,
+      "viewCount": 74322
+    }
+  },
+  {
+    "id": "46460b09-e8e3-437e-afa4-cb05d56e5de0",
+    "statistics": {
+      "contacts": 542,
+      "likes": 567,
+      "viewCount": 7543
+    }
+  }
+]
