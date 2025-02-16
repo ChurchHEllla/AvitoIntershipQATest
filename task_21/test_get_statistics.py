@@ -15,12 +15,9 @@ def api_client():
 def test_12(api_client, pNData, pItemId):
     dataReader = JsonToDict("./data/data_test_12.json")
     testData = dataReader.getElementById("id", pItemId)
-    # Шаг 1: Отправка GET-запроса
     api_client.get_statistics(pItemId)
-    # Шаг 2: Проверка статуса ответа
     assert api_client.response.status_code == 200, f"Ожидалось получение статуса 200 ok, но запрос прошел неуспешно"
 
-    # Шаг 3: Проверка данных в ответе
     if api_client.response.status_code == 200:
         data = api_client.response.json()[0]
 
@@ -29,20 +26,21 @@ def test_12(api_client, pNData, pItemId):
         assert "viewCount" in data, "В ответе отсутствует поле 'viewCount'"
      
 
-        # Пример проверки типов данных (если известны ожидаемые типы)
         assert isinstance(data["contacts"], int), "Поле 'contacts' должно быть целым числом"
         assert isinstance(data["likes"], int), "Поле 'likes' должно быть целым числом"
         assert isinstance(data["viewCount"], int), "Поле 'viewCount' должно быть целым числом"
        
-        # Дополнительные проверки для сравнения значений в файле и получаемых
         assert data["contacts"] == testData["statistics"]["contacts"], f"Количество контактов в ответе не совпадает с ожидаемым: {testData["statistics"]['contacts']}"
         assert data["likes"] == testData["statistics"]["likes"], f"Количество лайков в ответе не совпадает с ожидаемым: {testData["statistics"]['likes']}"
         assert data["viewCount"] == testData["statistics"]["viewCount"], f"Количество просмотров в ответе не совпадает с ожидаемым: {testData["statistics"]['views']}"
+
 def test_13(api_client):
     api_client.get_statistics("b7852ee5-4033-43b6-aed8-d622700ce2d7")
+
     assert api_client.response.status_code == 404, f"Ожидалось получение статуса 404 Not Found, но запрос прошел успешно"
 
 def test_14(api_client):
     api_client.get_statistics("chupapimunyanya")
+
     assert api_client.response.status_code == 400, f"Ожидалось получение статуса 400 Bad Request, но запрос прошел успешно"
 
